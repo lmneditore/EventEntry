@@ -1,0 +1,8 @@
+AuthUserFile /hsphere/local/home/users/web/b39/ipw.louisvillemusicnews/.htmaster.#/__louisvillemusic.com_inks.htpasswd
+AuthGroupFile /dev/null
+AuthName "includes"
+AuthType Basic
+
+<Limit GET POST PUT>
+require user lmnguy
+</Limit>

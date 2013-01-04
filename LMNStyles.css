@@ -1,0 +1,576 @@
+body
+{
+font-family: arial, sans-serif;
+font-size: 10pt;
+line-height: 11pt;
+}
+div.mainbox
+{
+width: 680px;
+margin-left: auto;
+margin-right: auto;
+border: ridge thin white;
+background-color:white;
+color:blue;
+height: auto;
+}
+div.header
+{
+	margin: auto; 
+	width: 680px; 
+	border: ridge medium white; 
+	background-color:white
+}
+table.tablebody {
+background-color: white;
+width:100%; 
+text-align: center;
+vertical-align:top;
+}
+table.tr 
+{
+height: 12px;
+background-color: red; 
+}
+div.halfdiv
+{
+position: relative;
+float: left;
+width: 47%;
+top: 0%;
+max-width: 47%;
+background-color: #ffffff;
+vertical-align: top;
+padding: 1%;
+height:auto;
+min-height:100%;
+}
+div.frontpagebox
+{
+position: relative;
+float: left;
+width: 96%;
+max-width:96%;
+margin-top: 1%;
+background-color: #ffffff;
+padding-left:2%;
+padding-right:1%;
+height:auto;
+}
+div.venueeventdate
+{
+background-color: #0F5895;
+color:white;
+text-align: left;
+width: 100%;
+line-height: 15pt;
+
+font-weight: 600;
+font-stretch: extra-condensed;
+font-style: italic;
+text-indent: 4px;
+}
+div.venuetitle
+{
+background-color: #ffffff;
+color:#000000;
+text-align: center;
+font-size:11pt;
+font-weight: 500;
+font-style: italic;
+text-indent: 4px;
+width: 100%;
+}div.stagename
+{
+background-color: #949494;
+color: #000000;
+text-align: center;
+
+font-size: 11pt;
+font-weight: 600;
+
+width: 100%;
+}
+div.IssueHdr
+{
+background-color: #0c4a7d;
+color: #ffffff;
+border-style: ridge;
+text-align: center;
+font-size: 15pt;
+line-height: 20pt;
+font-weight: 600;
+font-style: italic;
+font-family: arial, sans-serif;
+width: 99%;
+}
+
+.searchinstructions {
+	background-color : white;
+	color: black;
+	text-align: Center;
+	line-height: 9pt;
+	font-size: 8pt;
+	font-weight: bold;
+	
+	}
+.centertable 
+{ background-color: white;
+border: thin solid #0c4a7d;
+align: center;
+}
+.centertableup 
+{ background-color: white;
+border: solid thin white;
+text-align: center;
+}
+.a.LINK {color: #0c4a7d;}
+.a.ALINK {color: #29B685;}
+.a.VLINK {color: #197BCF;}
+.a.hover {font-weight: bold;}
+.mainsubhdr
+{
+	background-color:#0c4a7d;
+	color: white;
+	text-align: center;
+	font-size:14pt;
+	font-weight: bold;
+	font-style : italic;
+	}
+.searchhdr
+{
+	background-color:#0c4a7d;
+	color: white;
+	text-align: center;
+	font-size:9pt;
+	font-weight: bold;
+	font-style : italic;
+	}
+.searchsubhdr
+{
+	background-color:#0c4a7d;
+	color: white;
+	text-align: center;
+	font-size:7.5pt;
+	font-weight: bold;
+	
+	font-style : italic;
+	}
+.eventdate { 
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+	padding: 2; 
+	background-color: #0099D1; 
+	color:white; 
+	text-align: center; 
+	line-height: 12.5pt; 
+	font-size: 10.5pt; 
+	font-weight: bold; 
+}
+.venue { 
+	background-color: white;
+	color: #0c4a7d;
+	text-align: center;
+	text-align: center;
+	line-height: 11pt;
+	width: 100%;
+	font-weight: bold;
+	}
+.venuesite 
+	{ background-color: #0c4a7d; 
+	color: #ffff66; 
+	text-align: center; 
+	line-height: 11pt; 
+	font-weight: bold; 
+	}
+.menu 
+{ 
+color: #0c4a7d;
+text-align: center;
+line-height: 10pt;
+font-size: 8pt;
+text-transform: uppercase;
+font-stretch: expanded;
+font-weight: 600;
+font-family: arial;
+}
+.menulist 
+{background-color: #ffffcc; 
+color: #0c4a7d;
+text-align: left;
+line-height: 10pt;
+font-size: 8pt;
+text-transform: uppercase;
+font-stretch: expanded;
+font-weight: 600;
+font-family: arial;
+}
+.event { background-color:  #2f24ff; 
+color: white; 
+text-align: center; 
+line-height: 10pt; 
+font-weight: normal; 
+}
+.title { padding: 1; 
+	background-color: white;
+	color: #660033;
+	text-align: center;
+	line-height: 10pt;
+	font-size: 9pt; 
+	}
+.thdr { Padding: "5"; background-color: #0099D1; color: #FEF4CF;  text-align: center; font-size: 12pt; font-weight: Bold; }
+.series { background-color: #78ABE4; color: white; text-align: center; line-height: 9pt; font-size: 9pt; }
+.act { background-color: white; color: black; text-align: center; line-height: 9pt; font-size: 8pt; font-weight: bold; }
+.admission { 
+ background-color: #e3d999;
+ color: black;
+ text-align: center;
+ line-height: 9pt;
+ font-size: 8pt;
+ font-weight: bold;
+ font-style : italic;
+ 	  }
+.newsheadlines { 
+ background-color: white;
+ color: black;
+ text-align: left;
+ line-height: 9pt;
+ font-size: 8pt;
+ font-weight: bold;
+ font-style : italic;
+ 	  }
+.URL { background-color: #78ABE4; color: "Yellow"; text-align: center; line-height: 10pt;  }
+.venueByRegion { background-color: #FEF2CF; color:#000099; text-align: center; line-height: 13pt; font-size: 11pt; font-weight: bold; }
+.RegionHDR { padding: 3; background-color: #0099D1; color: Black;  Text-align: center; border: 0; line-height: 13pt; font-size: 12pt; font-weight: bold; }
+.Regional { padding: 3; background-color: #FFFFCC; color: Black;  width: 80%; Text-align: center; border: 0;   font-weight: Normal; }
+.TypeByRegion { background-color: white; color:#000099;  text-align: center; line-height: 14pt; font-size: 12pt; font-weight: bold;  }
+.Region {
+	background-color : white;
+	color: black;
+	text-align: Center;
+	line-height: 10pt;
+	font-size: 9pt;
+	font-weight: bold;
+	}
+.venueadvertiser 
+{ 
+	background-color: white;
+	color: #0c4a7d;
+	text-align: center;
+	line-height: 13.5pt;
+	width: 100%;
+	text-align: center;
+	font-size: 11.5pt;
+	font-weight: bold;
+	
+	}
+.actadvertiser 
+{ background-color: white; 
+   color: black;
+   text-align: center;
+   line-height: 10.5pt;
+   font-size: 9.5pt;
+   font-weight: bold;
+   
+	}
+.admission { 
+ background-color: #e3d999;
+ color: black;
+ text-align: center;
+ line-height: 9pt;
+ font-size: 8pt;
+ font-weight: bold;
+ font-style : italic;
+ 	  }
+	.venuesite 
+	{ background-color: #0c4a7d; 
+	color: #ffff66; 
+	text-align: center; 
+	line-height: 11pt; 
+	font-weight: bold; 
+	}
+.VenueNoneAdvertiser {
+	Position: Absolute;
+left: 136px; 
+width: 25%; }
+.TodaysDate {position:absolute;
+left: 1%;
+width: 100%; }
+.Headline { background-color: white;
+ color: #0d257b;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: center;
+ line-height: 16pt;
+ font-size: 14pt;
+ font-weight: bold;
+ }
+.subheadline { background-color: white;
+ color: #0d257b;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: center;
+  font-size: 12pt;
+ font-weight: bold;
+ }
+.colsubhead { background-color: white;
+ color: #0d257b;
+ text-align: left;
+  font-size: 11pt;
+ font-style: italic;
+ font-weight: bold;
+ }
+.Normal { background-color: white;
+ color: #0d257b;
+ text-align: justify;
+   font-weight: normal;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.Normalup { background-color:white;
+ color: black;
+ text-align: justify;
+   font-weight: normal;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.ByLine { background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 10pt;
+  font-weight: normal;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.Photocaption { background-color: white;
+ color: #0d257b;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: left;
+ line-height: normal;
+ font-size: 9pt;
+ font-weight: bold;
+ font-family: "Footlight MT Light", "Times New Roman", Times;
+}
+.tixandinfo { background-color: white;
+ color: black;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 9pt;
+ font-size: 9pt;
+ font-weight: bold;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.tixandinfoup { background-color: white;
+ color: black;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 9pt;
+ font-size: 9pt;
+ font-weight: bold;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.PhotoCredit { background-color: white;
+ color: #0d257b;
+ margin-left: 15px;
+ margin-right: 15px;
+ text-align: right;
+ line-height: normal;
+ font-size: 7pt;
+ font-weight: normal;
+ font-family: "Times New Roman", Times}
+.textbox { padding: 10px 10px 10px 10px;
+ font-family: "Times New Roman", Times, serif;
+ border:4;
+ border:  white;
+ background-color: white}
+.musicstyle { background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 16pt;
+ font-size: 13pt;
+ font-weight: bold;
+ font-style: italic;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.musicstyleup { background-color: white;
+ color: black;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 16pt;
+ font-size: 13pt;
+ font-weight: bold;
+ font-style: italic;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.AlbumTitle { background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 16pt;
+ font-size: 14pt;
+ font-weight: bold;
+ font-style: italic;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.ArtistName { background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 15pt;
+ font-size: 12pt;
+ font-weight: bold;
+ font-style: Normal;
+ font-family: Footlight MT Light, Times New Roman, Times;
+ }
+.Quip {background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 16pt;
+ font-size: 16pt;
+ font-weight: bold;
+ font-style: italic;
+ font-family: Kabul Bold;
+ Kabul;
+ arial;
+}
+.PullUp {background-color: white;
+ color: #0d257b;
+ margin-right: 15px;
+ text-align: left;
+ line-height: 16pt;
+ font-size: 16pt;
+ font-weight: bold;
+ font-style: italic;
+ font-family: Kabul Bold;
+ Kabul;
+ arial;
+}
+.Programdate { background-color: #0099D1;
+ color: white;
+ text-align: center;
+ line-height: 10pt;
+ font-size: 9pt;
+ font-weight: bold;
+ }
+.SingleListRightsub { background-color: #0099D1;
+ color: white;
+ text-align: left;
+ line-height: 8pt;
+ font-style: italic;
+ font-weight: normal;
+ font-size: 9pt;
+ bold;
+ }
+.SingleActLeft { width: 10%;
+ background-color: white;
+ color:#666633;
+ text-align: right;
+  font-style: italic;
+ font-weight: Bold;
+ font-size: 9pt;
+ bold;
+ }
+.SingleActRight { width: 45%;
+ background-color: #0099D1;
+ color:black;
+ text-align: left;
+   font-style: italic;
+ font-weight: bold;
+  bold;
+ }
+.SingleListLeft { 
+width: 27%;
+ position:relative;
+ float:left;
+ background-color: white;
+ color: black;
+ text-align: right;
+ line-height: 14pt;
+ font-style: italic;
+ font-variant: small-caps;
+ font-weight: Bold;
+ font-size: 9pt;
+ bold;
+ }
+.SingleListRight {
+width: 70%;
+ position:relative;
+ float:left;
+ color:Black;
+ background-color:white;
+ text-align: left;
+ font-size: 11pt;
+ line-height: 14pt;
+ font-style: Bold;
+ font-weight: Normal;
+ font-size: 11pt;
+ font-family: Times Roman;
+ padding-left: 5px;
+ }
+.SingleListLeftsub { width: 10%;
+ background-color: white;
+ color: #666633;
+ text-align: right;
+ line-height: 8pt;
+ font-style: italic;
+ font-weight: Normal;
+ font-size: 8pt;
+ bold;
+ }
+.MainTable
+{
+background-color:white; 
+padding:5;
+border:0; 
+text-align: center;
+width:580px;
+}
+.venueeditbody
+{
+background-color:#0F3925;
+}
+.VenueHdr 
+{
+background-color: #0c4a7d; 
+color: #ffff66; 
+text-align: center; 
+font-size: 15pt; 
+line-height: 20pt; 
+font-weight: bold; 
+font-style: italic; 
+width: 580px;
+ }
+ .lmnbutton {
+background-image:url("http://www.louisvillemusicnews.net/webmanager/images/lmnbutton.gif");
+background-repeat:no-repeat;
+font-size:8pt;
+background-color:#0c4a7d;
+color:#fff;
+font-weight:400;
+font-family:"Arial", "sans-serif";
+text-align:center;
+}
+.navbar
+{
+	position:relative;
+	float:left;
+	width: 100%;
+	margin:auto;
+}
+div.tdc
+{
+	font-weight: 600;
+	color:#000000;
+ 	background-color: #ffffff;
+	position: relative;
+	text-align: center;
+	float:left;
+	font-size: 10pt;
+	width: 97%;
+	vertical-align:top;
+	margin:0 auto;
+}
+

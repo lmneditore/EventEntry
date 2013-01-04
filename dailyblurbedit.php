@@ -1,0 +1,362 @@
+<?php SESSION_start();
+echo $_POST["_action"];
+include("classes/functions.php");
+if(class_exists("buttons")==False)
+	{include ("classes/buttonsclass.php");}
+include ("classes/newtablerecordclass.php");
+include("classes/cleantext.php");
+$buttons=new buttons;
+$title = "Daily Blurbs Edit";
+include ("louisvillemusic_netcnxn.php");
+$cnxn=new lm_netconnection;
+$dbname="louisvil_louisvillemusiccom";
+$cnxn->lm_connection($dbname);
+foreach($_POST as $name=>$value)
+{
+      //  echo $name."=".trim($value)."<BR />";
+        $$name=$value;}
+if (!isset($_action))
+{
+	$_action="List Blurbs";
+}
+if (!$_SESSION["valid_adminuser"])
+{
+echo $_SESSION["valid_adminuser"];
+echo $_SESSION["lmncontributorid"];
+echo "You are not authorized to be here or have not logged in. Click the button to login.";
+}
+ELSE
+{
+	If ($_action=="List Blurbs")
+	{
+	$sqlBlurbs = "SELECT DISTINCT DATE_FORMAT(DailyBlurbs.Date, '%Y-%m-%d') AS Date, DailyBlurbs.MainEVID, Acts.ActName, Venues.VenueName, MainEvents.Prices, ScheduleOfEvents.ProgramOrder FROM DailyBlurbs
+	LEFT JOIN ScheduleOfEvents ON DailyBlurbs.MainEVID = ScheduleOfEvents.MainEVID
+	LEFT JOIN Acts ON ScheduleOfEvents.ActID = Acts.ActID LEFT JOIN MainEvents ON DailyBlurbs.MainEVID=MainEvents.MainEVID LEFT JOIN Venues ON MainEvents.VenueID=Venues.VenueID WHERE DailyBlurbs.MainEVID>0 AND DailyBlurbs.Date>=CurDate() ORDER BY DailyBlurbs.Date ASC, ScheduleOfEvents.ProgramOrder DESC ";
+	$result = @mysql_query($sqlBlurbs) or die("couldn't execute the list query.");
+	$Blurbs = @mysql_fetch_array($result);
+	?>
+	<HTML>
+	<?
+	$stylesheet1="http://www.louisvillemusicnews.net/lmn/test/scratch/blurbstyles.css";
+	?><head><?
+	documentheaders($company, $stylesheet1,$stylesheet2,$url,$meta);
+?>
+	</HEAD>
+	<BODY class="blurbbody">
+	<DIV class="blurblist">
+	<DIV class="listheader">Louisville Music News Daily Blurb Edit</DIV>
+	<?
+		DO 
+		{
+		$Date=$Blurbs["Date"];
+		$ActName=$Blurbs["ActName"];
+		$MainEVID=$Blurbs["MainEVID"];
+			if ($MainEVID==$oldMainEVID)
+			{
+			}
+			ELSE
+			{
+			echo "<DIV class=\"listitem\">";
+			echo "<DIV class=\"listleft\">".$Date."</DIV><DIV class=\"listright\">&nbsp;".$ActName."</DIV>";
+			echo "<DIV Class=\"listbutton\"><FORM Action=\"index.php\" Method=\"POST\">";
+			echo "<input type=\"hidden\" name=\"MainEVID\" value=\"".$MainEVID."\">";
+			echo "<input type=\"hidden\" name=\"Date\" value=\"".$Date."\">";
+			//echo "<input type=\"hidden\" name=\"_action\" value=\"Edit Blurb\">";
+			$value="Edit Blurb";
+			echo $buttons->_actionbutton($value);
+			echo "</FORM></DIV></DIV>";
+			}
+		$oldMainEVID=$MainEVID;
+		}
+		WHILE ($Blurbs = @mysql_fetch_array($result));
+		?>
+	<!--</DIV class="blurblist"> -->
+	<DIV class="returnbutton">
+	</DIV>
+	</DIV>
+	</body>
+	</html>
+	<?
+	}
+	ELSE
+	{
+	IF ($_action=="New Blurb")
+	{
+	$tableheader="Add New Blurb and Click 'Save_New' Button";
+	$author=$_SESSION["valid_user"];
+	}
+	ELSEIF ($_action=="Preview Blurb")
+	{
+			$tableheader="Click 'Back' to continue editing";
+			$newdata=array();
+			foreach ($_POST as $key=>$val) 
+				{
+					
+					if(substr($key,-1)=="1") // check to see if $key has a '1' on the end
+					{
+						$oldkeyname=substr($key,0,strlen($key)-1);// $oldkeyname is the value of $newkeyname with the trailing '1' removed
+						
+							if ($key=="Blurb1")
+							{
+							$keycolor=$oldkeyname."color"; //Attach 'color' to end of $oldkeyname name	
+							$keylength=$oldkeyname."len";
+							$$keycolor="black"; //Set the variable to black
+							$newval=new cleantext();
+							$newval->cleanthistext(stripslashes($val));
+							$$oldkeyname=$newval->content;
+							$$keylength=strlen($$oldkeyname); 
+							$newkeynamearray=array($key=>$$oldkeyname);
+							$newdata=array_merge($newdata,$newkeynamearray);
+							}
+							ELSE
+							{
+							$$oldkeyname=$val;
+							$keycolor=$oldkeyname."color"; //Attach 'color' to end of $oldkeyname name	
+							$keylength=$oldkeyname."len";// Attach 'len' to the end of $oldkeyname name
+							$$keycolor="black"; //Set the variable to blue
+							$$keylength=strlen($val); 
+							$newkeynamearray=array($key=>$$oldkeyname);
+							$newdata=array_merge($newdata,$newkeynamearray);
+							}
+							
+					}
+					ELSE // if key is old value, do nothing
+					{
+					}
+				}
+				$_SESSION["newdata"]=serialize($newdata);
+	}
+	ELSEIF ($_action=="Save New Blurb")
+	{
+	}
+	ELSEIF ($_action=="Back")
+	{
+				$tableheader="Edit the Blurb and click 'Save_Update' to save or<BR> 'Preview' to see the final output.";
+				$newdata=unserialize($_SESSION["newdata"]);
+				if (!$newdata)
+				{
+				}
+				ELSE 
+				{
+					foreach($newdata as $key=>$value) 
+					{
+					$fieldname=substr($key,0,strlen($key)-1);
+					$$fieldname=$value;
+					$keycolor=$fieldname."color"; //Attach 'color' to end of $oldkeyname name	
+					$keylength=$fieldname."len";// Attach 'len' to the end of $oldkeyname name
+					$$keycolor="black"; //Set the variable to blue
+					$$keylength=strlen($$fieldname); 
+					}
+				}
+	}
+	ElSEIF ($_action=="Save Blurb Update")
+	{ // update the edited Blurb
+	//include($connection);
+    
+	$newBlurb=new cleantext;
+	$newBlurb->cleanthistext($Blurb1);
+	$Blurb=trim($newBlurb->content);
+	$Blurb=trim(addslashes($Blurb));
+	$sql="UPDATE DailyBlurbs SET DailyBlurbs.Blurb='".$Blurb."', DailyBlurbs.Date='".$Date1."', Tixandinfo='".$Tixandinfo1."' WHERE DailyBlurbs.MainEVID='".$MainEVID1."'";
+	$result=@mysql_query($sql) or die("couldn't execute this update query: ".$sql);
+	$sql="SELECT * FROM DailyBlurbs WHERE DailyBlurbs.MainEVID='$MainEVID1'";
+	$result=@mysql_query($sql) or die("couldn't execute this update query: ".$sql);
+	$changedrec=@mysql_fetch_array($result);
+	$numfields=@mysql_num_fields($result);
+		DO
+		{
+			for ($i=0; $i<$numfields; $i++) 
+			{
+			$fieldname= mysql_field_name($result, $i);
+			$$fieldname=$changedrec[$fieldname];
+			}
+		}
+		WHILE ($changedrec=@mysql_fetch_array($result));
+	//$eventBlurb="http://www.louisvillemusicnews.net/test/scratch/thisBlurb.php?MainEVID=".$MainEVID;
+	//include ("$eventBlurb");
+	}
+	ELSEIF ($_action=="Edit Blurb")
+	{
+	//include ($connection);
+      if(!isset($MainEVID))
+    {
+        echo "no ID number";
+    }
+    ELSE
+    {
+    $sql="Select * FROM DailyBlurbs LEFT JOIN LMNContributor on DailyBlurbs.author=LMNContributor.LMNContributorID
+WHERE DailyBlurbs.MainEVID='$MainEVID'";
+    }
+    $result = @mysql_query($sql) or die("couldn't execute the edit Blurb query $sql;.");
+    $thisBlurb = @mysql_fetch_array($result);
+	$numfields=@mysql_num_fields($result);
+		DO
+		{
+			for ($i=0; $i<$numfields; $i++) 
+			{
+			$fieldname= mysql_field_name($result, $i);
+			$$fieldname=$thisBlurb[$fieldname];
+			}
+		}
+		WHILE ($thisBlurb=@mysql_fetch_array($result));
+	}
+	ELSEIF ($_action=="Delete Blurb")
+	{
+	}
+	
+if($_action=="List Blurbs")
+{
+}
+ELSE
+{
+//DisplayHeader();
+?>
+	<HTML>
+<?
+$stylesheet1="http://www.louisvillemusicnews.net/lmn/stylesheets/blurbstyles.css";
+?><head><?
+documentheaders($company, $stylesheet1,$stylesheet2,$url,$meta);?>
+	</HEAD>
+	<BODY class="blurbbody">
+	<DIV class="blurblist">
+	<DIV class="listheader">Louisville Music News Daily Blurb Edit</DIV>
+	<!--<DIV class="thdr"> //echo $tableheader; ?> </DIV> -->
+	<DIV class="centersection">
+<form action="index.php" name="Blurbedit" method="POST">
+<input type="hidden" name="MainEVID1" value="<? echo $MainEVID; ?>">
+<div class="fullrow"><DIV class="td0">Event Date:</div><DIV class="tdr"><input type="text" name="Date1" value="<? echo $Date; ?>" size="10"></div></DIV>
+<div class="fullrow"><DIV class="td0">Tix And Info:</div> <DIV class="tdr"><input type="text" name="Tixandinfo1" value="<? echo $Tixandinfo; ?>" size="10"></div></DIV>
+<div class="fullrow"><DIV class="td0">Author:</div> <DIV class="tdr"><input type="text" name="WholeName1" value="<? echo $WholeName; ?>" size="10" READONLY ></div></DIV>
+<div class="fullrow"><DIV class="td0">Displaystatus:</div> <DIV class="tdr"><input type="text" name="displaystatus1" value="<? echo $displaystatus; ?>" size="3" READONLY ></div></DIV>
+<div class="fullrow"><DIV class="td0">Genre:</div> <DIV class="tdr"><input type="text" name="genre1" value="<? echo $genre; ?>" size="20" READONLY ></div></DIV> 
+<?
+	}
+			if ($_action=="Edit Blurb")//% Edit an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Preview Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="Save Blurb Update";
+				echo $buttons->_actionbutton($value);
+				$value="Delete Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</DIV>";
+				}
+				ELSEif ($_action=="Back")//% Return to an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Preview Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="Save Blurb Update";
+				echo $buttons->_actionbutton($value);
+				$value="Delete Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</DIV>";
+				}
+				ELSEIF ($_action=="Preview Blurb")//% Edit an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Back";
+				echo $buttons->backup($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</DIV>";
+				}
+				ELSEIF ($_action=="New Blurb")//%Begin a New item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Save New Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</Div>";
+				}
+				ELSEIF ($_action=="Save New Blurb")// %Add the new item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Edit Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</div>";
+				}
+				ELSEIF ($_action=="Save Blurb Update")//%Update an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Back";
+				echo $buttons->backup($value);
+				$value="Edit Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</div>";
+				}
+				ELSEIF ($_action=="Confirm Blurb Edit")//%Delete an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</div>";
+				unset($_SESSION["olddata"]);
+				}
+				ELSEIF ($_action=="Delete Blurb")//%Delete an item
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="Confirm Delete Blurb";
+				echo $buttons->_actionbutton($value);
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</div>";
+				}
+				ELSEIF ($_action=="Confirm Delete Blurb")
+				{
+				echo "<DIV class=\"td3\" >";
+				$value="List Blurbs";
+				echo $buttons->_actionbutton($value);
+				echo "</DIV>";
+				}// all submits but list
+				@mysql_close();
+				
+				if ($_action=="List Blurbs")
+				{
+				}
+				ELSE
+				{
+				echo "<DIV class=\"blurblist\"><SPAN class=\"td0\" >Content:&nbsp;</span></DIV>";
+				}
+				if ($_POST["submit"]=="Preview Blurb")
+{ ?>
+<div class="Blurbpreview" >
+<a class="alert"  href="javascript:void()" onMouseOver="self.status='This Blurb cannot be edited in this mode. '; return true;" onMouseOut="self.status='';" OnClick='alert("This Blurb cannot be edited in this mode. Click the Back button to return to editing mode.")'; return true;" >
+<?echo $Blurb;
+echo "</a></div>"; 
+}
+ELSEIF ($_action=="Save Blurb Update")
+{
+?>
+<div class="formBlurb" ><textarea cols="54" rows="40"  name="Blurb1" style="color:".$blurbcolor.";" size="<? echo $blurblen;?>" OnClick='alert("This Blurb cannot be edited in this mode. Click the Back button to return to editing mode.")'>
+<? echo $Blurb; ?></textarea>
+<?
+echo "</div>";
+}
+ELSEIF ($_action=="Confirm Blurb Edit")
+{?>
+<div class="formBlurb" ><textarea cols="53" rows="40"  name="Blurb1" style="color:".$blurbcolor.";" size="<? echo $blurblen;?>" OnClick='alert("This Blurb cannot be edited in this mode. Click the List button to return to the Main Menu.")'>
+<? echo $Blurb; ?></textarea>
+<? echo "</div>";
+}
+ELSE
+{?>
+<div class="formBlurb" ><textarea style="width:98%;" rows="40"  name="Blurb1" style="color:".$blurbcolor.";" size="<? echo $blurblen;?>" ><? echo $Blurb; ?></textarea><?
+echo "</div>";
+}
+				?>
+				</div></form>
+<?PHP
+}
+} //end of $valid_user check
+?>

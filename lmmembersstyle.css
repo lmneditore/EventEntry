@@ -1,0 +1,65 @@
+<style>
+.formbody
+{
+background-color: #2f5266;
+}
+.tablebody
+{
+ align: center;
+ width: 55%;
+ background-color:#eadeb0;
+}
+.centertable
+{
+ align: center;
+ width: 100%;
+ background-color:#eadeb0;
+}
+.td1
+{
+text-align: right;
+font-weight: bold;
+font-family: arial;
+font-size: .8em;
+}
+.td2
+{
+text-align: left;
+font-weight: bold;
+font-size: .8em
+}
+.td3
+{
+text-align: center;
+font-size: .6em;
+font-weight: semi-bold;
+font-family: arial, sansserif;
+}
+.td4
+{
+text-align: center;
+font-size: .6em;
+font-weight: semi-bold;
+font-family: arial, sansserif;
+width: 10 em;
+}
+.thdr
+{
+background-color: #0F3925;; 
+color: white; 
+text-align: center; 
+font-size: 1em;
+text-align:center;
+}
+.searchinstructions {
+	background-color : #FEFCD8;
+	color: black;
+	text-align: Center;
+	line-height: 9pt;
+	font-size: 8pt;
+	font-weight: semi-bold;
+	font-family: arial;
+	}
+
+
+</style>

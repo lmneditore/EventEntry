@@ -1,0 +1,118 @@
+.searchhdr
+{
+background:#0F3925;
+color: #f5e3a7;
+text-align:center;
+font-size:9 pt;
+font-weight: bold;
+font-family: arial;
+font-style : italic;
+}
+.venuesite 
+{
+background: #0F3925; 
+width: 580;
+color: #ffff66; 
+text-align:center; 
+line-height: 13pt; 
+font-size: 10pt; 
+font-weight: bold; 
+font-family: arial 
+}
+.VenueHdr 
+{
+background: #0F3925; 
+width: 580;
+color: #ffff66; 
+text-align:center; 
+font-size: 15pt; 
+line-height: 20pt; 
+font-weight: bold; 
+font-style: italic; 
+font-family: arial;
+width: 580px;
+}
+.venueeditbody
+{
+background-color:#0F3925;
+}
+.MainTable
+{
+background:#f2f2f2; 
+padding:5;
+border: solid thick #0099D1 ; 
+text-align:center;
+width:580px;
+}
+.inserttable
+{
+background:#FEFCD8;
+padding: 5;
+border:0;
+text-align:center;
+width: 580px;
+}
+.act { 
+background: #f5e3a1; 
+color: black; 
+text-align:center; 
+line-height: 10pt; 
+font-size: 8pt; 
+font-weight: semi-bold; 
+font-family: arial; 
+}
+
+.editeventdate { 
+margin: 0px 0px 0px 50px;
+padding: 2; 
+background: #E3D8B7; 
+color:#0c4a7d;
+text-align:center; 
+line-height: 11.5pt; 
+font-size: 9.5pt; 
+font-weight: bold; 
+font-family: arial; }
+
+.title { padding: 1; 
+background: #e2cf8b;
+color: #660033;
+text-align:center;
+line-height: 13pt;
+font-size: 9pt; 
+font-family: arial 
+}
+.sourceinfo {
+font-size: 9pt;
+color: #00cc00;
+text-align:left;
+}
+
+.photosearchhdr
+{
+background-color:#f2f2f2;
+	color: black;
+	text-align:center;
+	font-size:9 pt;
+	font-weight: bold;
+	font-family: arial;
+	font-style : italic;
+	}
+.act { background-color: #f2f2f2; color: black; text-align:center; line-height: 9pt; font-size: 8pt; font-weight: semi-bold; font-family: arial }
+
+.eventdate { 
+	margin: 0px; 0px; 0px; 50px;
+	padding: 2; 
+	background: #0099D1; 
+	color:#f5e3a7; 
+	text-align:center; 
+	line-height: 11.5pt; 
+	font-size: 10.5pt; 
+	font-weight: bold; 
+	font-family: arial 
+	}
+.venuelist
+{
+	height: 14px;
+	text-align:center;
+	margin: auto;
+}
